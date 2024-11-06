@@ -23,15 +23,10 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f0f0f0; /* Фон для світлої теми */
-  color: #213547; /* Колір тексту для світлої теми */
+  background-color: #f0f0f0;
+  color: #213547;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
 
 a {
   font-weight: 500;
@@ -63,7 +58,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Адаптивність */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
