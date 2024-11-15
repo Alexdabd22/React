@@ -1,10 +1,9 @@
 import SurveyForm from './SurveyForm';
-import './App.css';
+import './SurveyForm.css';
 
 function App() {
     return (
-        <div className="app-container">
-            <h1>Tech Skills / Activity Survey</h1>
+        <div className="App">
             <SurveyForm />
         </div>
     );
