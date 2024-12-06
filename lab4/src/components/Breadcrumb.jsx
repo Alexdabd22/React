@@ -1,20 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useBreadcrumbs from '../hooks/useBreadcrumbs';
 
 const Breadcrumb = () => {
-    const location = useLocation();
-    const paths = location.pathname.split('/').filter((path) => path);
-
-    const breadcrumbs = [
-        { name: 'Головна', path: '/' },
-        ...paths.map((path, index) => ({
-            name: path
-                .replace('computers-and-laptops', 'Комп’ютери та ноутбуки')
-                .replace('laptops', 'Ноутбуки')
-                .replace('lenovo', 'Ноутбук Lenovo'),
-            path: '/' + paths.slice(0, index + 1).join('/'),
-        })),
-    ];
+    const breadcrumbs = useBreadcrumbs();
 
     return (
         <nav>
@@ -22,7 +11,7 @@ const Breadcrumb = () => {
                 {breadcrumbs.map((crumb, index) => (
                     <li key={index} className="breadcrumb-item">
                         {index < breadcrumbs.length - 1 ? (
-                            <Link to={crumb.path}>{crumb.name}</Link>
+                            <Link to={crumb.link}>{crumb.name}</Link>
                         ) : (
                             <span>{crumb.name}</span>
                         )}

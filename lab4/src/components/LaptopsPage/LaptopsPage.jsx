@@ -1,13 +1,19 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const LaptopsPage = () => {
-    const navigate = useNavigate();
+    const location = useLocation();
+    const isNestedRoute = location.pathname !== '/computers-and-laptops/laptops';
 
     return (
         <div>
-            <h1>Ноутбуки</h1>
-            <button onClick={() => navigate('/laptops/lenovo')}>Ноутбук Lenovo</button>
+            {!isNestedRoute && (
+                <>
+                    <h1>Ноутбуки</h1>
+                    <Link to="lenovo">Перейти до ноутбука Lenovo</Link>
+                </>
+            )}
+            <Outlet />
         </div>
     );
 };
