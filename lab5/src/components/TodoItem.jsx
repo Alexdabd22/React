@@ -13,29 +13,34 @@ const TodoItem = ({ todo }) => {
     };
 
     return (
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
+        <li className="todo-item">
             {isEditing ? (
                 <input
                     type="text"
                     value={newTask}
                     onChange={(e) => setNewTask(e.target.value)}
+                    className="todo-edit-input"
                 />
             ) : (
                 <span
+                    onClick={() => toggleTodo(todo.id)}
                     style={{
                         textDecoration: todo.completed ? "line-through" : "none",
                         cursor: "pointer",
                     }}
-                    onClick={() => toggleTodo(todo.id)}
                 >
-          {todo.task}
-        </span>
+                    {todo.task}
+                </span>
             )}
             <div>
-                <button onClick={handleEdit}>{isEditing ? "Зберегти" : "Редагувати"}</button>
-                <button onClick={() => removeTodo(todo.id)}>Видалити</button>
+                <button onClick={handleEdit} className="edit-button">
+                    {isEditing ? "Зберегти" : "Редагувати"}
+                </button>
+                <button onClick={() => removeTodo(todo.id)} className="delete-button">
+                    Видалити
+                </button>
             </div>
-        </div>
+        </li>
     );
 };
 
